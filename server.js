@@ -10,7 +10,7 @@ const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express(); 
-const PORT = process.env.PORT || 3003; 
+var port = process.env.PORT || 8000;
 
 
 const hbs = exphbs.create({ helpers });
@@ -38,4 +38,6 @@ app.use(routes);
  
 sequelize.sync();
 
-app.listen(process.env.PORT || 5000)
+server.listen(port, function() {
+  console.log("App is running on port " + port);
+});
